@@ -7,6 +7,9 @@ const pythonPath = path.join(__dirname, "extension.py");
 const requirements = path.join(__dirname, "../requirements.txt");
 const osvar = process.platform;
 
+const events = require("events");
+const myEmitter = new events.EventEmitter();
+
 if (osvar == "win32") {
   spawn("python", ["-m", "pip", "install", "-r", requirements]);
 } else {
@@ -183,12 +186,17 @@ function activate(context) {
 let globalStorage = {}
 console.log("The Extension 'Betterscan' has started");
 let betterscanScan = vscode.commands.registerCommand('Betterscan.betterscanScan',async function () {
-let funcName = "betterscan_scan"; let pyVar = "python3";
+let funcName1 = "betterscan_scan1";
+let pyVar = "python3";
+let funcName2 = "betterscan_scan2"; 
+let funcName3 = "betterscan_scan3"; 
+let funcName4 = "betterscan_scan4"; 
         
         let code_dir = vscode.workspace.workspaceFolders
         console.log(code_dir[0]["uri"]["fsPath"])
         process.env.CODE_DIR=code_dir[0]["uri"]["fsPath"]
-        let py = spawn(pyVar, [pythonPath, funcName]);
+        let py = spawn(pyVar, [pythonPath, funcName1]);
+        vscode.window.showInformationMessage(`Betterscan Scan init`);
         
       
     
@@ -202,7 +210,79 @@ let funcName = "betterscan_scan"; let pyVar = "python3";
         py.stderr.on("data", (data) => {
             console.error(`An Error occurred in the python script: ${data}`);
         });
+        py.on('exit', (exitCode) => {
+          if (parseInt(exitCode) !== 0) {
+              //Handle non-zero exit
+          }
+          myEmitter.emit('spawn1-finished');
         });
+      
+        myEmitter.on('spawn1-finished', () => {
+          
+        });
+
+
+        let py1 = spawn(pyVar, [pythonPath, funcName2]);
+     
+        
+      
+    
+        py1.stdout.on("data", (data) => {
+            try {
+            executeCommands(py, data, globalStorage);
+            } catch (e) {
+            console.error(e);
+            }
+        });
+        py1.stderr.on("data", (data) => {
+            console.error(`An Error occurred in the python script: ${data}`);
+        });
+        py1.on('exit', (exitCode) => {
+          if (parseInt(exitCode) !== 0) {
+              //Handle non-zero exit
+          }
+          myEmitter.emit('spawn2-finished');
+        });
+      
+        myEmitter.on('spawn2-finished', () => {
+           
+        });
+
+    
+
+        let py3 = spawn(pyVar, [pythonPath, funcName3]);
+       
+        
+      
+    
+        py3.stdout.on("data", (data) => {
+            try {
+            executeCommands(py, data, globalStorage);
+            } catch (e) {
+            console.error(e);
+            }
+        });
+        py3.stderr.on("data", (data) => {
+            console.error(`An Error occurred in the python script: ${data}`);
+        });
+        py3.on('exit', (exitCode) => {
+          if (parseInt(exitCode) !== 0) {
+              //Handle non-zero exit
+          }
+          myEmitter.emit('spawn4-finished');
+        });
+      
+        myEmitter.on('spawn4-finished', () => {
+            vscode.window.showInformationMessage(`Betterscan Scan complete`);
+        });
+
+
+        });
+
+     
+
+        
+
 context.subscriptions.push(betterscanScan);
 }
 

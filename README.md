@@ -19,16 +19,6 @@ This repository contains a [**Betterscan CLI**](https://github.com/marcinguy/bet
 
 You must have [**Docker**](https://www.docker.com/) installed, click [**here**](https://github.com/marcinguy/betterscan-ce) to check more detailed information about **Betterscan-CLI** requirements.
 
-Download [cli-html.sh](https://raw.githubusercontent.com/marcinguy/betterscan-vscode/master/cli-html.sh)
-
-`curl https://raw.githubusercontent.com/marcinguy/betterscan-vscode/master/cli-html.sh --output cli-html.sh`
-
-Make it executable (`chmod a+x cli-html.sh`)
-
-Set environmental variable `BETTERSCAN_HOME` to folder you saved the file
-
-`export BETTERSCAN_HOME=/home/user`
-
 That's it
 
 ### Executing an analysis
