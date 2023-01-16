@@ -1,0 +1,31 @@
+{
+  "name": "Betterscan",
+  "displayName": "Betterscan",
+  "description": "Code Scanning/SAST/Static Analysis/Linting using many tools/Scanners with One Report (Code, IaC) - Betterscan Community Edition (CE)",
+  "version": "0.0.10",
+  "publisher": "betterscan",
+  "repository": "https://github.com/marcinguy/betterscan-ce",
+  "icon": "resources/betterscan_icon.png",
+  "engines": {
+    "vscode": "^1.58.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./build/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "Betterscan.betterscanScan",
+        "title": "Betterscan Scan"
+      }
+    ],
+    "configuration": {
+      "title": "Betterscan",
+      "properties": {}
+    }
+  },
+  "activationEvents": [
+    "onCommand:Betterscan.betterscanScan"
+  ]
+}
