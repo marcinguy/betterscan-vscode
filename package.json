@@ -2,7 +2,7 @@
   "name": "Betterscan",
   "displayName": "Betterscan",
   "description": "Code Scanning/SAST/Static Analysis/Linting using many tools/Scanners with One Report (Code, IaC) - Betterscan Community Edition (CE)",
-  "version": "0.0.12",
+  "version": "0.0.18",
   "publisher": "betterscan",
   "repository": "https://github.com/marcinguy/betterscan-ce",
   "icon": "resources/betterscan_icon.png",

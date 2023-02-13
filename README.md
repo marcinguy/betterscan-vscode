@@ -8,6 +8,9 @@
 ### 5. [**Contributing**](#contributing)
 ### 6. [**License**](#license)
 
+## Important
+
+For plugin to work you need have a Workspace active ("Add Folder to Workspace ...")
 
 ## **About**
 
